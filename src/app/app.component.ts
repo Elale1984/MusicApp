@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Version } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'musicapp';
+  title = '"My Music Collection';
+  version = '"1.0"';
+
+  displayVersion() {
+    alert("Version: " + this.version);
+  }
+
+  displayArtistList() {
+    alert("Artist List will be displayed here");
+  }
 }
+
+
