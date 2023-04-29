@@ -1,1 +1,11 @@
-<p>list-artists works!</p>
+<div class="list-group" *ngIf="selectedArtist == null">
+  <button class="list-group-item" active
+    *ngFor="let artist of artists"
+    (click)="onSelectArtist(artist)">
+    {{ artist.Name }}
+  </button>
+</div>
+
+<div *ngIf="selectedArtist">
+  <app-list-albums [artist] = "selectedArtist"></app-list-albums>
+</div>

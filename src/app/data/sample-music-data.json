@@ -5,7 +5,7 @@
     "artist": "The Beatles",
     "description": "",
     "year": "1966",
-    "image": "https://upload.wikimedia.org/wikipedia/en/e/ec/Revolver_%28album_cover%29.jpg",
+    "image": "7.png",
     "tracks": [
       {
         "trackId": 1,
@@ -113,7 +113,7 @@
     "artist": "The Beatles",
     "description": "My 2nd favorite Beatles Album",
     "year": "1965",
-    "image": "https://upload.wikimedia.org/wikipedia/en/7/74/Rubber_Soul.jpg",
+    "image": "6.png",
     "tracks": [
       {
         "trackId": 27,
