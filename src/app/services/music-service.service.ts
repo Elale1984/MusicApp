@@ -3,6 +3,7 @@ import exampledata from '../../app/data/sample-music-data.json';
 import { Artist } from '../models/artists.model';
 import { Album } from '../models/albums.model';
 import { Track } from '../models/tracks.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({providedIn: 'root'})
 export class MusicServiceService
@@ -11,37 +12,18 @@ export class MusicServiceService
   artists: Artist[] = [];
   albums: Album[] = [];
 
+  private host = "http://localhost:3000";
+
   // The constructor is initializing an artist with a couple albums found in the example data
   // and creating the Albums, Tracks, and applying them to the Artist.
-  constructor()
-  {
-    // Creating an Artist and adding to Artist[]
-    this.artists.push(new Artist(0, "The Beatles"));
-
-    // Creating a list of Albums and its Tracks
-    for(let x =0;x < exampledata.length;++x)
-    {
-      // Only getting "The Beatles" artist
-      if(exampledata[x].artist == "The Beatles")
-      {
-        // Creating an empty Track array to store the tracks for the album
-        let tracks: Track[] = [];
-
-        // Iterating over the exampledata and adding the tracks to tracks[]
-        for(let y =0;y < exampledata[x].tracks.length;++y)
-          tracks.push(new Track(exampledata[x].tracks[y].trackId, exampledata[x].tracks[y].number, exampledata[x].tracks[y].title,
-            exampledata[x].tracks[y].lyrics, exampledata[x].tracks[y].video));
-        // Adding the new albums created to the albums[]
-        this.albums.push(new Album(exampledata[x].albumId, exampledata[x].title, exampledata[x].artist,
-          exampledata[x].description, exampledata[x].year, exampledata[x].image, tracks));
-      }
-    }
-  }
+  constructor(private http: HttpClient){ }
 
   // Return the list of Artists
-  public getArtists(): Artist[]
-  {
-    return this.artists;
+  public getArtists(callback: (artists: Artist[]) => void): void  {
+    this.http.get<Artist[]>(this.host + "/artists").
+      subscribe((artists: Artist[]) => {
+        callback(artists);
+      });
   }
 
   // Return the list of Albums

@@ -1,11 +1,14 @@
+<div align="center" *ngIf="loadingMsg">
+  <p class="text-muted">{{ loadingMsg }}</p>
+</div>
 <div class="list-group" *ngIf="selectedArtist == null">
-  <button class="list-group-item" active
-    *ngFor="let artist of artists"
-    (click)="onSelectArtist(artist)">
-    {{ artist.Name }}
-  </button>
+    <button class="list-group-item" active
+      *ngFor="let artist of artists"
+      (click)="onSelectArtist(artist)">
+      {{ artist.Name }}
+    </button>
 </div>
 
 <div *ngIf="selectedArtist">
-  <app-list-albums [artist] = "selectedArtist"></app-list-albums>
+  <app-list-albums [artist]="selectedArtist"></app-list-albums>
 </div>

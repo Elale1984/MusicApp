@@ -13,7 +13,6 @@ export class Artist
     {
         return this.id;
     }
-
     set Id(id:number)
     {
         this.id = id;
@@ -23,9 +22,8 @@ export class Artist
     {
         return this.name;
     }
-
-    set Name(artist:string)
+    set Name(name:string)
     {
-        this.name = artist;
+        this.name = name;
     }
 }
